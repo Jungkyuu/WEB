@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/css/main.css" rel="stylesheet" />
+    <title><%= set.name %></title>
+    <style>
+      .dropdown-menu {
+        display: none;
+      }
+      .dropdown-menu.show {
+        display: block;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 text-gray-900">
+    <%- include('partials/navbar', { page: '' }) %>
+    <main class="container mx-auto p-4">
+      <section class="hero bg-blue-100 p-8 rounded-lg text-center">
+        <div class="hero-content">
+          <div>
+            <h1 class="text-4xl mb-4"><%= set.name %></h1>
+            <p class="mb-4">
+              Below, you will find detailed information about the set: <%=
+              set.name %>
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+        <div>
+          <img
+            src="<%= set.img_url %>"
+            alt="<%= set.name %> image"
+            class="rounded-lg shadow-lg w-full h-auto"
+          />
+        </div>
+        <div>
+          <p class="mt-2"><strong>Name:</strong> <%= set.name %></p>
+          <p class="mt-2"><strong>Year:</strong> <%= set.year %></p>
+          <p class="mt-2"><strong>Theme:</strong> <%= set.theme %></p>
+          <p class="mt-2"><strong>Parts:</strong> <%= set.num_parts %></p>
+          <p class="mt-2"><strong>Quote:</strong> <span id="quote"></span></p>
+          <button
+            onclick="history.back(); return false;"
+            class="btn btn-secondary mt-4"
+          >
+            Back
+          </button>
+        </div>
+      </section>
+    </main>
+    <script>
+      const dropdownButton = document.getElementById("dropdownButton");
+      const dropdownMenu = document.getElementById("dropdownMenu");
+
+      dropdownButton.addEventListener("click", () => {
+        dropdownMenu.classList.toggle("show");
+      });
+
+      window.addEventListener("click", (e) => {
+        if (!dropdownButton.contains(e.target)) {
+          dropdownMenu.classList.remove("show");
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        fetch("https://quotable.io/random")
+          .then((response) => response.json())
+          .then((data) => {
+            document.getElementById(
+              "quote"
+            ).textContent = `${data.content} — ${data.author}`;
+          });
+      });
+    </script>
+  </body>
+</html>

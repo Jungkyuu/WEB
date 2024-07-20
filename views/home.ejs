@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="/css/main.css" rel="stylesheet" />
     <title>Lego Collection</title>
+    <link rel="stylesheet" href="/css/main.css" />
     <style>
       .dropdown-menu {
         display: none;
@@ -70,16 +70,20 @@
       </section>
     </main>
     <script>
-      const dropdownButton = document.getElementById("dropdownButton");
-      const dropdownMenu = document.getElementById("dropdownMenu");
+      document.addEventListener("DOMContentLoaded", () => {
+        const dropdownButton = document.getElementById("dropdownButton");
+        const dropdownMenu = document.getElementById("dropdownMenu");
 
-      dropdownButton.addEventListener("click", () => {
-        dropdownMenu.classList.toggle("show");
-      });
+        if (dropdownButton && dropdownMenu) {
+          dropdownButton.addEventListener("click", () => {
+            dropdownMenu.classList.toggle("show");
+          });
 
-      window.addEventListener("click", (e) => {
-        if (!dropdownButton.contains(e.target)) {
-          dropdownMenu.classList.remove("show");
+          window.addEventListener("click", (e) => {
+            if (!dropdownButton.contains(e.target)) {
+              dropdownMenu.classList.remove("show");
+            }
+          });
         }
       });
     </script>

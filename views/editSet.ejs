@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Set - <%= set.name %></title>
+    <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+    <% include('partials/navbar', { page: 'editSet' }) %>
+
+    <main class="container mx-auto p-4">
+        <section class="hero bg-blue-100 p-8 rounded-lg text-center">
+            <div class="hero-content">
+                <h1 class="text-4xl">Edit Set - <%= set.name %></h1>
+            </div>
+        </section>
+
+        <section class="mt-8">
+            <form action="/lego/editSet" method="post">
+                <input type="hidden" name="set_num" value="<%= set.set_num %>">
+
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" value="<%= set.name %>" required>
+
+                <label for="year">Year:</label>
+                <input type="number" id="year" name="year" value="<%= set.year %>" required>
+
+                <label for="num_parts">Number of Parts:</label>
+                <input type="number" id="num_parts" name="num_parts" value="<%= set.num_parts %>" required>
+
+                <label for="theme">Theme:</label>
+                <select id="theme" name="theme_id" required>
+                    <% themes.forEach(theme => { %>
+                        <option value="<%= theme.id %>" <%= theme.id === set.theme_id ? 'selected' : '' %>><%= theme.name %></option>
+                    <% }) %>
+                </select>
+
+                <button type="submit" class="btn btn-primary">Update Set</button>
+            </form>
+
+            
+            <div class="mt-4">
+                <a href="/lego/deleteSet/<%= set.set_num %>" class="btn btn-error" onclick="return confirm('Are you sure you want to delete this set?');">Delete Set</a>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

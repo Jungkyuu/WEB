@@ -5,6 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="/css/main.css" rel="stylesheet" />
     <title>Collection</title>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+      }
+      th {
+        background-color: #f2f2f2;
+        color: #333;
+      }
+      td img {
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
   </head>
   <body class="bg-gray-100 text-gray-900">
     <%- include('partials/navbar', { page: '/lego/sets' }) %>
@@ -53,9 +73,9 @@
               <td><%= set.name %></td>
               <td>
                 <a
-                  href="/lego/sets?theme=<%= set.theme %>"
+                  href="/lego/sets?theme=<%= set.Theme.name %>"
                   class="btn btn-primary"
-                  ><%= set.theme %></a
+                  ><%= set.Theme.name %></a
                 >
               </td>
               <td><%= set.year %></td>

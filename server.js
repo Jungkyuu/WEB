@@ -8,7 +8,7 @@
  *
  *  Name: Jungkyu Mok Student ID: 161501226 Date: 2024.7.19
  *
- *  Published URL: ___________________________________________________________
+ *  Published URL: https://web-55-a4cdrz2hm-jungkyuus-projects.vercel.app/
  *
  ********************************************************************************/
 

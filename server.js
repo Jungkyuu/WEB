@@ -1,3 +1,17 @@
+/********************************************************************************
+ *  WEB322 – Assignment 05
+ *
+ *  I declare that this assignment is my own work in accordance with Seneca's
+ *  Academic Integrity Policy:
+ *
+ *  https://www.senecacollege.ca/about/policies/academic-integrity-policy.html
+ *
+ *  Name: Jungkyu Mok Student ID: 161501226 Date: 2024.7.19
+ *
+ *  Published URL: ___________________________________________________________
+ *
+ ********************************************************************************/
+
 const legoData = require("./modules/legoSets");
 const path = require("path");
 

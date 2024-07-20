@@ -20,6 +20,15 @@ const sequelize = new Sequelize(
   }
 );
 
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("Connection has been established successfully.");
+  })
+  .catch((err) => {
+    console.log("Unable to connect to the database:", err);
+  });
+
 const Theme = sequelize.define("Theme", {
   id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
   name: Sequelize.STRING,

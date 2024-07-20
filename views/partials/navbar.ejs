@@ -1,17 +1,10 @@
 <nav class="bg-blue-500 text-white p-4">
   <div class="container mx-auto flex justify-between items-center">
     <a href="/" class="text-3xl">Lego Collection</a>
-    <div class="space-x-4 hidden md:flex">
+    <div class="space-x-4 flex">
       <a class="<%= (page == "/lego/sets") ? 'active' : '' %>" href="/lego/sets">View Collection</a>
       <a class="<%= (page == "/about") ? 'active' : '' %>" href="/about">About</a>
       <a class="<%= (page == '/lego/addSet') ? 'active' : '' %>" href="/lego/addSet">Add to Collection</a>
     </div>
-    
   </div>
 </nav>
-
-<script>
-  document.getElementById('menuButton').addEventListener('click', () => {
-    document.getElementById('menuItems').classList.toggle('hidden');
-  });
-</script>

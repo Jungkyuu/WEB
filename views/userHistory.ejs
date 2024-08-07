@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User History</title>
+    <link rel="stylesheet" href="/css/main.css" />
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #4a5568;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('partials/navbar', { page: 'userHistory' }) %>
+
+    <div class="container mx-auto p-4">
+      <header class="mb-4">
+        <h1 class="text-3xl font-bold text-center">sampleuser</h1>
+        <p class="text-center text-gray-600">
+          User History: <%= session.user.email %>
+        </p>
+      </header>
+
+      <table class="min-w-full bg-white">
+        <thead class="bg-gray-800 text-white">
+          <tr>
+            <th class="text-left py-3 px-4 uppercase font-semibold text-sm">
+              Login Date/Time
+            </th>
+            <th class="text-left py-3 px-4 uppercase font-semibold text-sm">
+              Client Information
+            </th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-700">
+          <% session.user.loginHistory.forEach(function(history) { %>
+          <tr>
+            <td class="text-left py-3 px-4">
+              <%= new Date(history.dateTime).toString() %>
+            </td>
+            <td class="text-left py-3 px-4"><%= history.userAgent %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

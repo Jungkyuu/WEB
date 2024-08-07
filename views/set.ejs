@@ -42,12 +42,18 @@
           <p class="mt-2"><strong>Theme:</strong> <%= set.theme %></p>
           <p class="mt-2"><strong>Parts:</strong> <%= set.num_parts %></p>
           <p class="mt-2"><strong>Quote:</strong> <span id="quote"></span></p>
+
+          <!-- Conditionally render the Edit button based on session.user -->
+
+          <% if (session.user) { %>
           <button
             onclick="location.href='/lego/editSet/<%= set.set_num %>'"
             class="btn btn-primary mt-4"
           >
             Edit Set
           </button>
+          <% } %>
+
           <button
             onclick="history.back(); return false;"
             class="btn btn-secondary mt-4"

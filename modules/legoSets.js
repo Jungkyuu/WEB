@@ -48,8 +48,14 @@ const Set = sequelize.define("Set", {
 
 Set.belongsTo(Theme, { foreignKey: "theme_id" });
 
-function initialize() {
-  return sequelize.sync();
+async function initialize() {
+  try {
+    await sequelize.sync();
+    console.log("Database synchronized");
+  } catch (err) {
+    console.error("Error synchronizing database:", err);
+    throw err;
+  }
 }
 
 function getAllSets() {

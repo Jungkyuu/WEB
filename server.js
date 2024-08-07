@@ -15,6 +15,7 @@
 const express = require("express");
 const path = require("path");
 const legoData = require("./modules/legoSets");
+const Sequelize = require("sequelize");
 
 const authData = require("./modules/auth-service");
 const clientSessions = require("client-sessions");
@@ -25,6 +26,7 @@ const HTTP_PORT = process.env.PORT || 8080;
 app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
+app.use(express.urlencoded({ extended: true }));
 
 app.use(
   clientSessions({
